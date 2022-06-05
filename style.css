@@ -1,0 +1,350 @@
+*, *::after, *::before {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+	position: relative;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: inherit;
+	overflow: hidden;
+}
+
+.outWrapper {
+	display: flex;
+	flex-direction: column;
+	height: inherit;
+	justify-content: space-between;
+	padding: 0;
+	margin: 0;
+}
+
+/*BACKGROUND*/
+
+.morning {
+	background: linear-gradient(to bottom, rgb(115,180,212), rgb(255,233,157));
+}
+
+.evening {
+	
+	background: linear-gradient(to bottom, rgb(106, 176, 240), rgb(237, 136, 53));
+}
+
+.night {
+	background: linear-gradient(to top, rgb(0, 0, 0), rgb(12, 36, 75));
+}
+
+
+/*CLOCK*/
+
+.clock-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	min-height: 70vh;
+	overflow: hidden;
+	font-family: Gotham Rounded, sans-serif;
+}
+
+@media (max-width: 600px) {
+	.clock-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	min-height: 50vh;
+	overflow: hidden;
+	font-family: Gotham Rounded, sans-serif;
+}
+}
+
+@media (max-height: 600px) {
+	.clock-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	min-height: 20%;
+	overflow: hidden;
+	font-family: Gotham Rounded, sans-serif;
+}
+}
+
+.clock {
+	width: 380px;
+	height: 380px;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, .8);
+	border: 2px solid rgba(0, 0, 0, 0.8);
+	position: relative;
+	box-shadow: 0 0 15px #000000;
+	margin: 20px;
+	z-index: 100;
+}
+
+@media (max-width: 600px) {
+	.clock {
+	width: 280px;
+	height: 280px;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, .8);
+	border: 2px solid rgba(0, 0, 0, 0.8);
+	position: relative;
+	box-shadow: 0 0 15px #000000;
+	margin: 20px;
+}
+}
+
+@media (max-height: 475px) {
+	.clock {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, .8);
+	border: 2px solid rgba(0, 0, 0, 0.8);
+	position: relative;
+	box-shadow: 0 0 15px #000000;
+	margin: 20px;
+}
+}
+
+.clockNight {
+	box-shadow: 0 0 15px #FFFFFF;
+	background-color: rgb(241, 234, 207);
+}
+
+.clock .number {
+	--rotation: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding: 0.2rem;
+	text-align: center;
+	transform: rotate(var(--rotation));
+	font-size: 2rem;
+	font-family: 'Nunito', sans-serif;
+}
+
+@media (max-width: 600px) {
+	.clock .number {
+	--rotation: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding: 0.2rem;
+	text-align: center;
+	transform: rotate(var(--rotation));
+	font-size: 1.4rem;
+	font-family: 'Nunito', sans-serif;
+}
+}
+
+
+
+.clock .number1 { --rotation: 30deg; }
+.clock .number2 { --rotation: 60deg; }
+.clock .number3 { --rotation: 90deg; }
+.clock .number4 { --rotation: 120deg; }
+.clock .number5 { --rotation: 150deg; }
+.clock .number6 { --rotation: 180deg; }
+.clock .number7 { --rotation: 210deg; }
+.clock .number8 { --rotation: 240deg; }
+.clock .number9 { --rotation: 270deg; }
+.clock .number10 { --rotation: 300deg; }
+.clock .number11 { --rotation: 330deg; }
+
+
+ .clock .hand {
+	--rotation: 0;
+	position: absolute;
+	bottom: 50%;
+	left: 50%;
+	background-color: black;
+	border: 1px solid white;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	transform-origin: bottom;
+	z-index: 10;
+	transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+}
+
+.clock::after {
+	content: '';
+	position: absolute;
+	background-color: black;
+	z-index: 11;
+	width: 15px;
+	height: 15px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+}
+
+.clock .hand.second {
+	width: 3px;
+	height: 45%;
+	background-color: red;
+}
+
+.clock .hand.minute {
+	width: 7px;
+	height: 40%;
+	background-color: black;
+}
+
+.clock .hand.hour {
+	width: 10px;
+	height: 35%;
+	background-color: black;
+}
+
+/* TYPING EFFECT */
+
+
+.wrapper {
+  height: 20vh;
+  display: flex;
+  justify-content: safe center;
+  align-items: flex-end;
+}  
+
+@media (max-width: 600px) {
+	.wrapper {
+  height: 15vh;
+  display: flex;
+  justify-content: safe center;
+  align-items: flex-end;
+}
+} 
+
+
+
+ .typing-demo {
+  width: 15ch;
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: 'Nunito', sans-serif;
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 600px) {
+	.typing-demo {
+  width: 15ch;
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: 'Nunito', sans-serif;
+  font-size: 2.3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+} 
+
+ .typing-demoEvening{
+  width: 14ch;
+}
+
+@media (max-width: 600px) {
+	.typing-demoEvening{
+		width: 14.3ch;
+	  }
+} 
+
+
+ .typing-demoNight {
+  width: 12ch;
+} 
+
+ @media (max-width: 600px) {
+	.typing-demoNight{
+		width: 12.2ch;
+	  }
+} 
+
+ #typingDemo p {
+  margin: 0;
+  
+} 
+
+ @keyframes typing {
+  from {
+    width: 0
+  }
+} 
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+
+.whiteText {
+  color: white;
+}
+
+.whiteBlink {
+  border-color: white;
+} 
+
+/*TODAYS DATE*/
+
+#todaysDate {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Nunito', sans-serif;
+	font-weight: 300;
+	letter-spacing: 1px;
+	height: 50px;
+	text-transform: uppercase;
+	font-size: 1.2em;
+}
+
+
+/*FOOTER*/
+
+footer {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: flex-end;
+	background-color: rgba(999, 999, 999, .5);
+	padding: 0.6vh 0 0.6vh 0;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.dark {
+	
+	background-color: rgba(0, 0, 0, .4);
+	color: white;
+}
+
+.white {
+	color: white;
+}
+
+footer p {
+	margin: 0;
+	font-family: 'Nunito', sans-serif;
+}
+
+.fa-heart {
+	color: #ff4f8a;
+	margin: 0 0.25rem 0 0.25rem;
+}  
